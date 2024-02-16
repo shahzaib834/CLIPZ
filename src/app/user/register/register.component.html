@@ -1,0 +1,116 @@
+<app-alert *ngIf="showAlert" [color]="alertColor">
+  {{ alertMsg }}
+</app-alert>
+
+<!-- Registration Form -->
+<form #form="ngForm" [formGroup]="registerForm" (ngSubmit)="submitForm()">
+  <!-- <div
+    class="bg-red-500 p-2 rounded-md mb-5"
+    *ngIf="form.submitted && registerForm.status === 'INVALID'"
+  >
+    <p>There are errors in form</p>
+  </div> -->
+  <!-- Name -->
+  <div class="mb-3">
+    <label class="inline-block mb-2">Name</label>
+    <input
+      formControlName="name"
+      type="text"
+      class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
+      [ngClass]="{
+        '!border-red-500':
+          registerForm.controls.name.touched &&
+          registerForm.controls.name.dirty &&
+          registerForm.controls.name.errors
+      }"
+      placeholder="Enter Name"
+    />
+  </div>
+  <!-- Email -->
+  <div class="mb-3">
+    <label class="inline-block mb-2">Email</label>
+    <input
+      formControlName="email"
+      type="email"
+      class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
+      [ngClass]="{
+        '!border-red-500':
+          registerForm.controls.email.touched &&
+          registerForm.controls.email.dirty &&
+          registerForm.controls.email.errors
+      }"
+      placeholder="Enter Email"
+    />
+  </div>
+  <!-- Age -->
+  <div class="mb-3">
+    <label class="inline-block mb-2">Age</label>
+    <input
+      formControlName="age"
+      type="number"
+      class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
+      [ngClass]="{
+        '!border-red-500':
+          registerForm.controls.age.touched &&
+          registerForm.controls.age.dirty &&
+          registerForm.controls.age.errors
+      }"
+    />
+  </div>
+  <!-- Password -->
+  <div class="mb-3">
+    <label class="inline-block mb-2">Password</label>
+    <input
+      formControlName="password"
+      type="password"
+      class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
+      [ngClass]="{
+        '!border-red-500':
+          registerForm.controls.password.touched &&
+          registerForm.controls.password.dirty &&
+          registerForm.controls.password.errors
+      }"
+      placeholder="Password"
+    />
+  </div>
+  <!-- Confirm Password -->
+  <div class="mb-3">
+    <label class="inline-block mb-2">Confirm Password</label>
+    <input
+      formControlName="confirm_password"
+      type="password"
+      class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
+      [ngClass]="{
+        '!border-red-500':
+          registerForm.controls.confirm_password.touched &&
+          registerForm.controls.confirm_password.dirty &&
+          registerForm.controls.confirm_password.errors
+      }"
+      placeholder="Confirm Password"
+    />
+  </div>
+  <!-- Phone Number -->
+  <div class="mb-3">
+    <label class="inline-block mb-2">Phone Number</label>
+    <input
+      formControlName="phone_number"
+      type="text"
+      class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
+      [ngClass]="{
+        '!border-red-500':
+          registerForm.controls.phone_number.touched &&
+          registerForm.controls.phone_number.dirty &&
+          registerForm.controls.phone_number.errors
+      }"
+      mask="+00-000-0000000"
+      placeholder="Enter Phone Number"
+    />
+  </div>
+  <button
+    type="submit"
+    [disabled]="registerForm.invalid"
+    class="block w-full bg-indigo-400 text-white py-1.5 px-3 rounded transition hover:bg-indigo-500 disabled:opacity-50"
+  >
+    Submit
+  </button>
+</form>
